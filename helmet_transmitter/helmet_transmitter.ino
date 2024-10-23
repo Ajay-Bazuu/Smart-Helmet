@@ -24,12 +24,13 @@ void fsrReadValue(){
   fsrValue1=analogRead(fsrPin1);
   fsrValue2=analogRead(fsrPin2);
   // Print the values
+  Serial.print("FSR Value1: ");
   Serial.println(fsrValue1);
+  Serial.print("FSR Value2: ");
   Serial.println(fsrValue2);
   Serial.println();
 
   if (fsrValue1>2045 || fsrValue2>2045){
-        command1="W"; //  Helmet Worn
         Serial.println("Helmet Worn ");
   }else{
     command1="NT"; // Helmet not Worn
@@ -41,6 +42,7 @@ void fsrReadValue(){
 
 void alcoholReadValue(){
   alcoholValue=analogRead(mq3Pin);
+  Serial.print("ALcohol Value ");
   Serial.println(alcoholValue);
 }
 
@@ -48,6 +50,6 @@ void alcoholReadValue(){
 void loop() {
   fsrReadValue(); // calling the function to read the values from FSR
   alcoholReadValue(); // calling the function to read the values 
-  delay(100); //wait for 1 second
+  delay(500); //wait for 1 second
 
 }
